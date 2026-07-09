@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMW Motorrad | Make Life a Ride</title>
+  <meta name="description" content="Página de inicio de BMW Motorrad: motocicletas, prueba de manejo, concesionarios y más.">
+  <style>
+    /* ============ RESET & BASE ============ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bmw-blue: #0066b1;
+      --bmw-blue-dark: #00518c;
+      --bmw-light-blue: #009ada;
+      --ink: #16171a;
+      --gray-900: #262626;
+      --gray-700: #4d4d4d;
+      --gray-500: #8e8e8e;
+      --gray-300: #d6d6d6;
+      --gray-100: #f2f2f2;
+      --white: #ffffff;
+      --max-w: 1200px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.55;
+    }
+
+    img, svg { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      margin-bottom: .4em;
+    }
+    .section-sub { color: var(--gray-700); max-width: 640px; margin-bottom: 2.2rem; }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 30px;
+      font-size: .95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .btn-primary { background: var(--bmw-blue); color: var(--white); }
+    .btn-primary:hover { background: var(--bmw-blue-dark); }
+    .btn-outline { background: transparent; color: var(--white); border-color: var(--white); }
+    .btn-outline:hover { background: var(--white); color: var(--ink); }
+    .btn-dark { background: var(--ink); color: var(--white); }
+    .btn-dark:hover { background: var(--gray-700); }
+
+    /* ============ TOP BAR ============ */
+    .topbar {
+      background: var(--ink);
+      color: var(--gray-300);
+      font-size: .78rem;
+    }
+    .topbar-inner {
+      display: flex; justify-content: flex-end; gap: 22px;
+      padding: 7px 24px; max-width: var(--max-w); margin: 0 auto;
+    }
+    .topbar a:hover { color: var(--white); }
+
+    /* ============ HEADER / NAV ============ */
+    header.site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-300);
+    }
+    .nav-inner {
+      max-width: var(--max-w); margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-name { font-weight: 700; font-size: 1.05rem; letter-spacing: .06em; }
+    .brand-name span { display: block; font-size: .68rem; font-weight: 400; color: var(--gray-700); letter-spacing: .22em; text-transform: uppercase; }
+
+    nav.main-nav ul { display: flex; gap: 4px; }
+    nav.main-nav a {
+      display: block; padding: 26px 16px;
+      font-size: .88rem; font-weight: 600; text-transform: uppercase; letter-spacing: .03em;
+      border-bottom: 3px solid transparent;
+    }
+    nav.main-nav a:hover, nav.main-nav a.active { border-bottom-color: var(--bmw-blue); color: var(--bmw-blue); }
+
+    .nav-toggle {
+      display: none; background: none; border: 0; cursor: pointer;
+      width: 42px; height: 42px; position: relative;
+    }
+    .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after {
+      content: ""; position: absolute; left: 8px; right: 8px; height: 2px; background: var(--ink);
+    }
+    .nav-toggle span { top: 20px; }
+    .nav-toggle span::before { top: -8px; }
+    .nav-toggle span::after { top: 8px; }
+
+    /* ============ HERO ============ */
+    .hero {
+      position: relative;
+      min-height: 82vh;
+      display: flex; align-items: flex-end;
+      color: var(--white);
+      background:
+        radial-gradient(ellipse at 75% 20%, rgba(0,154,218,.35), transparent 55%),
+        linear-gradient(160deg, #0b0d10 0%, #14181d 45%, #232a33 100%);
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to top, rgba(0,0,0,.72) 0%, rgba(0,0,0,0) 45%);
+      pointer-events: none;
+    }
+    .hero-road {
+      position: absolute; bottom: -6%; left: 50%; transform: translateX(-50%);
+      width: 140%; height: 45%;
+      background: linear-gradient(to top, #05070a 30%, transparent);
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      max-width: var(--max-w); margin: 0 auto; width: 100%;
+      padding: 120px 24px 90px;
+    }
+    .hero-kicker {
+      color: var(--bmw-light-blue); font-weight: 700; letter-spacing: .28em;
+      text-transform: uppercase; font-size: .8rem; margin-bottom: 12px;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 6.5vw, 4.6rem);
+      text-transform: uppercase; line-height: 1.05; letter-spacing: .01em;
+      max-width: 700px;
+    }
+    .hero p.lead { margin: 18px 0 30px; max-width: 520px; color: #dfe4e9; font-size: 1.05rem; }
+    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-badge {
+      position: absolute; top: 90px; right: 6%;
+      text-align: right; opacity: .9; z-index: 2;
+    }
+    .hero-badge strong { display:block; font-size: clamp(3rem, 9vw, 6.5rem); line-height: 1; color: rgba(255,255,255,.10); font-weight: 800; letter-spacing:.02em;}
+
+    /* ============ CATEGORY GRID ============ */
+    .categories { padding: 84px 0 40px; }
+    .cat-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    }
+    .cat-card {
+      position: relative; min-height: 230px; padding: 26px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      color: var(--white); overflow: hidden; cursor: pointer;
+      transition: transform .25s;
+    }
+    .cat-card:hover { transform: translateY(-4px); }
+    .cat-card h3 { text-transform: uppercase; font-size: 1.25rem; letter-spacing: .04em; }
+    .cat-card p { font-size: .85rem; color: rgba(255,255,255,.82); }
+    .cat-card .arrow { position: absolute; top: 20px; right: 20px; font-size: 1.3rem; opacity:.85; }
+    .cat-sport     { background: linear-gradient(150deg,#1a2740,#0f68ad 90%); }
+    .cat-tour      { background: linear-gradient(150deg,#20262c,#4a5a68 90%); }
+    .cat-roadster  { background: linear-gradient(150deg,#2a2125,#8c2f39 90%); }
+    .cat-heritage  { background: linear-gradient(150deg,#241f1a,#7a6a4f 90%); }
+    .cat-adventure { background: linear-gradient(150deg,#1c2420,#3f7a52 90%); }
+    .cat-urban     { background: linear-gradient(150deg,#22222a,#5b5e9e 90%); }
+
+    /* ============ FEATURED MODELS ============ */
+    .models { padding: 60px 0 84px; }
+    .model-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .model-card {
+      border: 1px solid var(--gray-300); background: var(--white);
+      display: flex; flex-direction: column;
+      transition: box-shadow .25s;
+    }
+    .model-card:hover { box-shadow: 0 14px 34px rgba(0,0,0,.12); }
+    .model-visual {
+      height: 190px; display:flex; align-items:center; justify-content:center;
+      font-size: 3.6rem; color: var(--white);
+    }
+    .mv-1 { background: linear-gradient(135deg,#11324e,#0066b1); }
+    .mv-2 { background: linear-gradient(135deg,#2b2b2b,#5c6670); }
+    .mv-3 { background: linear-gradient(135deg,#3a1f24,#a63a46); }
+    .model-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+    .model-tag { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; color: var(--bmw-blue); margin-bottom: 6px; }
+    .model-body h3 { font-size: 1.35rem; text-transform: uppercase; }
+    .model-body p { font-size: .9rem; color: var(--gray-700); margin: 8px 0 16px; flex: 1; }
+    .model-price { font-weight: 700; margin-bottom: 16px; }
+    .model-price small { display:block; font-weight: 400; color: var(--gray-500); }
+    .model-links { display: flex; gap: 10px; }
+    .link-cta {
+      font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+      color: var(--bmw-blue); border-bottom: 2px solid transparent; padding-bottom: 2px;
+    }
+    .link-cta:hover { border-bottom-color: var(--bmw-blue); }
+
+    /* ============ BANNER CTA ============ */
+    .banner {
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(0,102,177,.5), transparent 60%),
+        linear-gradient(120deg, #101418, #1d242c);
+      color: var(--white); padding: 74px 0; text-align: left;
+    }
+    .banner-inner { display:flex; align-items:center; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
+    .banner h2 { font-size: clamp(1.5rem,3.4vw,2.2rem); text-transform: uppercase; max-width: 560px; }
+    .banner p { color: #c9d2da; margin-top: 8px; max-width: 520px; }
+
+    /* ============ FORMS (GENERAL) ============ */
+    .form-section { padding: 84px 0; }
+    .form-section.alt { background: var(--gray-100); }
+    .form-wrap {
+      background: var(--white); border: 1px solid var(--gray-300);
+      padding: 40px; max-width: 860px;
+    }
+    .form-section.alt .form-wrap { box-shadow: 0 10px 30px rgba(0,0,0,.06); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 22px; }
+    .form-field { display: flex; flex-direction: column; }
+    .form-field.full { grid-column: 1 / -1; }
+    .form-field label {
+      font-size: .78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .08em; margin-bottom: 7px; color: var(--gray-900);
+    }
+    .form-field label .req { color: #c1121f; }
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      font: inherit; padding: 12px 14px;
+      border: 1px solid var(--gray-300); background: var(--white);
+      outline: none; transition: border-color .2s;
+    }
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus { border-color: var(--bmw-blue); }
+    .form-field textarea { resize: vertical; min-height: 110px; }
+    .check-field { grid-column: 1 / -1; display: flex; gap: 10px; align-items: flex-start; font-size: .85rem; color: var(--gray-700); }
+    .check-field input { margin-top: 3px; accent-color: var(--bmw-blue); }
+    .form-actions { grid-column: 1 / -1; margin-top: 6px; }
+    .form-note { grid-column: 1 / -1; font-size: .78rem; color: var(--gray-500); }
+    .form-msg {
+      display: none; grid-column: 1 / -1;
+      padding: 14px 16px; font-size: .9rem; font-weight: 600;
+    }
+    .form-msg.ok { display: block; background: #e7f4ea; color: #1d6b32; border: 1px solid #bfe3c8; }
+    .form-msg.err { display: block; background: #fdeaea; color: #a31621; border: 1px solid #f3c2c6; }
+
+    /* ============ NEWSLETTER ============ */
+    .newsletter { background: var(--ink); color: var(--white); padding: 64px 0; }
+    .newsletter-inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+    .newsletter h2 { text-transform: uppercase; font-size: clamp(1.4rem,3vw,2rem); }
+    .newsletter p { color: var(--gray-300); margin-top: 8px; font-size: .95rem; }
+    .newsletter-form { display: flex; flex-direction: column; gap: 12px; }
+    .newsletter-row { display: flex; gap: 10px; }
+    .newsletter-row input {
+      flex: 1; font: inherit; padding: 13px 15px; border: 1px solid var(--gray-700);
+      background: #1f2126; color: var(--white); outline: none;
+    }
+    .newsletter-row input:focus { border-color: var(--bmw-light-blue); }
+    .newsletter .check-field { color: var(--gray-300); }
+    .newsletter .form-msg { grid-column: auto; }
+
+    /* ============ FOOTER ============ */
+    footer.site-footer { background: #0c0d0f; color: var(--gray-300); font-size: .88rem; }
+    .footer-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px;
+      padding: 60px 0 40px;
+    }
+    .footer-grid h4 {
+      color: var(--white); text-transform: uppercase; font-size: .82rem;
+      letter-spacing: .1em; margin-bottom: 14px;
+    }
+    .footer-grid li { margin-bottom: 9px; }
+    .footer-grid a:hover { color: var(--white); text-decoration: underline; }
+    .footer-bottom {
+      border-top: 1px solid #24262a; padding: 22px 0;
+      display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+      font-size: .78rem; color: var(--gray-500);
+    }
+    .footer-bottom nav { display: flex; gap: 18px; flex-wrap: wrap; }
+    .social { display: flex; gap: 14px; margin-top: 6px; }
+    .social a {
+      width: 38px; height: 38px; border: 1px solid var(--gray-700);
+      display: flex; align-items: center; justify-content: center; border-radius: 50%;
+      font-weight: 700; font-size: .8rem;
+    }
+    .social a:hover { border-color: var(--white); color: var(--white); }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 900px) {
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+      .model-grid { grid-template-columns: 1fr; }
+      .newsletter-inner { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      nav.main-nav {
+        display: none;
+        position: absolute; top: 72px; left: 0; right: 0;
+        background: var(--white); border-bottom: 1px solid var(--gray-300);
+      }
+      nav.main-nav.open { display: block; }
+      nav.main-nav ul { flex-direction: column; }
+      nav.main-nav a { padding: 15px 24px; border-bottom: 1px solid var(--gray-100); }
+      .nav-toggle { display: block; }
+      .hero-badge { display: none; }
+    }
+    @media (max-width: 560px) {
+      .cat-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-wrap { padding: 26px 20px; }
+      .newsletter-row { flex-direction: column; }
+      .topbar-inner { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ TOP BAR ============ -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a href="#dealer">Buscar concesionario</a>
+      <a href="#test-ride">Prueba de manejo</a>
+      <a href="#contacto">Contacto</a>
+      <a href="#">ES | EN</a>
+    </div>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="brand" href="#" aria-label="BMW Motorrad - Inicio">
+        <svg width="46" height="46" viewBox="0 0 100 100" role="img" aria-label="Logo">
+          <circle cx="50" cy="50" r="48" fill="#16171a"/>
+          <circle cx="50" cy="50" r="36" fill="#ffffff"/>
+          <path d="M50 14 A36 36 0 0 1 86 50 L50 50 Z" fill="#0066b1"/>
+          <path d="M50 86 A36 36 0 0 1 14 50 L50 50 Z" fill="#0066b1"/>
+        </svg>
+        <span class="brand-name">BMW Motorrad<span>Make Life a Ride</span></span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+      </button>
+
+      <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
+        <ul>
+          <li><a href="#modelos" class="active">Modelos</a></li>
+          <li><a href="#categorias">Categorías</a></li>
+          <li><a href="#test-ride">Prueba de manejo</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#newsletter">Newsletter</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-road"></div>
+    <div class="hero-badge"><strong>R 1300 GS</strong></div>
+    <div class="hero-inner">
+      <p class="hero-kicker">Nueva generación</p>
+      <h1>La aventura no espera.<br>La R 1300 GS ya está aquí.</h1>
+      <p class="lead">Más potencia, menos peso y la tecnología más avanzada que hemos puesto sobre dos ruedas. Descubre hasta dónde puedes llegar.</p>
+      <div class="hero-cta">
+        <a href="#modelos" class="btn btn-primary">Descubrir modelos</a>
+        <a href="#test-ride" class="btn btn-outline">Agendar prueba de manejo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CATEGORÍAS ============ -->
+  <section class="categories" id="categorias">
+    <div class="container">
+      <h2 class="section-title">Encuentra tu estilo</h2>
+      <p class="section-sub">Cada motocicleta BMW pertenece a una familia con carácter propio. Elige la tuya.</p>
+      <div class="cat-grid">
+        <a class="cat-card cat-sport" href="#modelos">
+          <span class="arrow">→</span>
+          <h3>Sport</h3><p>Adrenalina pura, del circuito a la carretera.</p>
+        </a>
+        <a class="cat-card cat-tour" href="#modelos">
+          <span class="arrow">→</span>
+          <h3>Tour</h3><p>Comodidad y autonomía para grandes distancias.</p>
+        </a>
+        <a class="cat-card cat-roadster" href="#modelos">
+          <span class="arrow">→</span>
+          <h3>Roadster</h3><p>Diseño esencial y manejo dinámico urbano.</p>
+        </a>
+        <a class="cat-card cat-heritage" href="#modelos">
+          <span class="arrow">→</span>
+          <h3>Heritage</h3><p>Estilo clásico con ingeniería moderna.</p>
+        </a>
+        <a class="cat-card cat-adventure" href="#modelos">
+          <span class="arrow">→</span>
+          <h3>Adventure</h3><p>Preparadas para cualquier terreno del mundo.</p>
+        </a>
+        <a class="cat-card cat-urban" href="#modelos">
+          <span class="arrow">→</span>
+          <h3>Urban Mobility</h3><p>Movilidad ágil y eléctrica para la ciudad.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MODELOS DESTACADOS ============ -->
+  <section class="models" id="modelos">
+    <div class="container">
+      <h2 class="section-title">Modelos destacados</h2>
+      <p class="section-sub">Una selección de nuestras motocicletas más populares de esta temporada.</p>
+      <div class="model-grid">
+        <article class="model-card">
+          <div class="model-visual mv-1">🏍️</div>
+          <div class="model-body">
+            <p class="model-tag">Adventure</p>
+            <h3>R 1300 GS</h3>
+            <p>El nuevo referente del trail: motor bóxer de 145 hp, chasis más ligero y asistentes de conducción de última generación.</p>
+            <p class="model-price">Desde $18,895 USD <small>Precio sugerido. No incluye gastos de envío.</small></p>
+            <div class="model-links">
+              <a class="link-cta" href="#test-ride">Probar</a>
+              <a class="link-cta" href="#contacto">Cotizar</a>
+            </div>
+          </div>
+        </article>
+        <article class="model-card">
+          <div class="model-visual mv-2">🏍️</div>
+          <div class="model-body">
+            <p class="model-tag">Sport</p>
+            <h3>S 1000 RR</h3>
+            <p>Nacida en el circuito. 205 hp, aerodinámica con alerones y electrónica de competición para el máximo rendimiento.</p>
+            <p class="model-price">Desde $17,895 USD <small>Precio sugerido. No incluye gastos de envío.</small></p>
+            <div class="model-links">
+              <a class="link-cta" href="#test-ride">Probar</a>
+              <a class="link-cta" href="#contacto">Cotizar</a>
+            </div>
+          </div>
+        </article>
+        <article class="model-card">
+          <div class="model-visual mv-3">🏍️</div>
+          <div class="model-body">
+            <p class="model-tag">Heritage</p>
+            <h3>R 12 nineT</h3>
+            <p>El espíritu clásico del bóxer con acabados premium y posibilidades de personalización casi infinitas.</p>
+            <p class="model-price">Desde $16,395 USD <small>Precio sugerido. No incluye gastos de envío.</small></p>
+            <div class="model-links">
+              <a class="link-cta" href="#test-ride">Probar</a>
+              <a class="link-cta" href="#contacto">Cotizar</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BANNER ============ -->
+  <section class="banner" id="dealer">
+    <div class="container banner-inner">
+      <div>
+        <h2>Vívela antes de decidir</h2>
+        <p>Nada se compara con sentir una BMW en marcha. Agenda una prueba de manejo gratuita en el concesionario más cercano.</p>
+      </div>
+      <a href="#test-ride" class="btn btn-primary">Agendar ahora</a>
+    </div>
+  </section>
+
+  <!-- ============ FORM: PRUEBA DE MANEJO ============ -->
+  <section class="form-section alt" id="test-ride">
+    <div class="container">
+      <h2 class="section-title">Agenda tu prueba de manejo</h2>
+      <p class="section-sub">Completa el formulario y un asesor del concesionario te contactará para confirmar fecha y hora.</p>
+
+      <div class="form-wrap">
+        <form id="testRideForm" class="form-grid" novalidate>
+          <div class="form-field">
+            <label for="tr-nombre">Nombre <span class="req">*</span></label>
+            <input type="text" id="tr-nombre" name="nombre" required autocomplete="given-name" placeholder="Tu nombre">
+          </div>
+          <div class="form-field">
+            <label for="tr-apellido">Apellido <span class="req">*</span></label>
+            <input type="text" id="tr-apellido" name="apellido" required autocomplete="family-name" placeholder="Tu apellido">
+          </div>
+          <div class="form-field">
+            <label for="tr-email">Correo electrónico <span class="req">*</span></label>
+            <input type="email" id="tr-email" name="email" required autocomplete="email" placeholder="nombre@correo.com">
+          </div>
+          <div class="form-field">
+            <label for="tr-telefono">Teléfono <span class="req">*</span></label>
+            <input type="tel" id="tr-telefono" name="telefono" required autocomplete="tel" placeholder="(787) 555-0123">
+          </div>
+          <div class="form-field">
+            <label for="tr-modelo">Modelo de interés <span class="req">*</span></label>
+            <select id="tr-modelo" name="modelo" required>
+              <option value="">Selecciona un modelo</option>
+              <option>R 1300 GS</option>
+              <option>R 1300 GS Adventure</option>
+              <option>S 1000 RR</option>
+              <option>S 1000 XR</option>
+              <option>R 12 nineT</option>
+              <option>F 900 GS</option>
+              <option>CE 04 (eléctrica)</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="tr-fecha">Fecha preferida <span class="req">*</span></label>
+            <input type="date" id="tr-fecha" name="fecha" required>
+          </div>
+          <div class="form-field full">
+            <label for="tr-concesionario">Concesionario</label>
+            <select id="tr-concesionario" name="concesionario">
+              <option value="">Selecciona el más cercano</option>
+              <option>BMW Motorrad San Juan</option>
+              <option>BMW Motorrad Bayamón</option>
+              <option>BMW Motorrad Ponce</option>
+              <option>BMW Motorrad Mayagüez</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label for="tr-comentarios">Comentarios</label>
+            <textarea id="tr-comentarios" name="comentarios" placeholder="Cuéntanos si tienes alguna preferencia de horario u otra pregunta."></textarea>
+          </div>
+          <label class="check-field">
+            <input type="checkbox" id="tr-licencia" name="licencia" required>
+            <span>Confirmo que poseo una licencia de motocicleta vigente. <span class="req">*</span></span>
+          </label>
+          <label class="check-field">
+            <input type="checkbox" id="tr-privacidad" name="privacidad" required>
+            <span>Acepto la política de privacidad y el tratamiento de mis datos para gestionar esta solicitud. <span class="req">*</span></span>
+          </label>
+          <p class="form-note">Los campos marcados con * son obligatorios.</p>
+          <div class="form-msg" id="testRideMsg" role="status" aria-live="polite"></div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Enviar solicitud</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FORM: CONTACTO ============ -->
+  <section class="form-section" id="contacto">
+    <div class="container">
+      <h2 class="section-title">Contáctanos</h2>
+      <p class="section-sub">¿Tienes preguntas sobre modelos, financiamiento o accesorios? Escríbenos y te responderemos pronto.</p>
+
+      <div class="form-wrap">
+        <form id="contactForm" class="form-grid" novalidate>
+          <div class="form-field">
+            <label for="c-nombre">Nombre completo <span class="req">*</span></label>
+            <input type="text" id="c-nombre" name="nombre" required autocomplete="name" placeholder="Tu nombre completo">
+          </div>
+          <div class="form-field">
+            <label for="c-email">Correo electrónico <span class="req">*</span></label>
+            <input type="email" id="c-email" name="email" required autocomplete="email" placeholder="nombre@correo.com">
+          </div>
+          <div class="form-field full">
+            <label for="c-asunto">Asunto <span class="req">*</span></label>
+            <select id="c-asunto" name="asunto" required>
+              <option value="">Selecciona un asunto</option>
+              <option>Información de un modelo</option>
+              <option>Financiamiento</option>
+              <option>Accesorios y equipamiento</option>
+              <option>Servicio y mantenimiento</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label for="c-mensaje">Mensaje <span class="req">*</span></label>
+            <textarea id="c-mensaje" name="mensaje" required placeholder="Escribe tu mensaje aquí..."></textarea>
+          </div>
+          <label class="check-field">
+            <input type="checkbox" id="c-privacidad" name="privacidad" required>
+            <span>Acepto la política de privacidad y el tratamiento de mis datos para responder a mi consulta. <span class="req">*</span></span>
+          </label>
+          <p class="form-note">Los campos marcados con * son obligatorios.</p>
+          <div class="form-msg" id="contactMsg" role="status" aria-live="polite"></div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-dark">Enviar mensaje</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NEWSLETTER ============ -->
+  <section class="newsletter" id="newsletter">
+    <div class="container newsletter-inner">
+      <div>
+        <h2>Suscríbete al newsletter</h2>
+        <p>Novedades de modelos, eventos, ofertas exclusivas e historias de la comunidad BMW Motorrad, directo a tu correo.</p>
+      </div>
+      <form id="newsletterForm" class="newsletter-form" novalidate>
+        <div class="newsletter-row">
+          <input type="email" id="nl-email" name="email" required placeholder="Tu correo electrónico" aria-label="Correo electrónico">
+          <button type="submit" class="btn btn-primary">Suscribirme</button>
+        </div>
+        <label class="check-field">
+          <input type="checkbox" id="nl-privacidad" required>
+          <span>Acepto recibir comunicaciones y la política de privacidad. <span class="req">*</span></span>
+        </label>
+        <div class="form-msg" id="newsletterMsg" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Modelos</h4>
+          <ul>
+            <li><a href="#modelos">Sport</a></li>
+            <li><a href="#modelos">Tour</a></li>
+            <li><a href="#modelos">Roadster</a></li>
+            <li><a href="#modelos">Heritage</a></li>
+            <li><a href="#modelos">Adventure</a></li>
+            <li><a href="#modelos">Urban Mobility</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Compra</h4>
+          <ul>
+            <li><a href="#contacto">Cotizaciones</a></li>
+            <li><a href="#test-ride">Prueba de manejo</a></li>
+            <li><a href="#dealer">Concesionarios</a></li>
+            <li><a href="#contacto">Financiamiento</a></li>
+            <li><a href="#contacto">Motos pre-owned</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Experiencia</h4>
+          <ul>
+            <li><a href="#">Eventos y rodadas</a></li>
+            <li><a href="#">Equipamiento del piloto</a></li>
+            <li><a href="#">Accesorios originales</a></li>
+            <li><a href="#">Servicio y mantenimiento</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Síguenos</h4>
+          <div class="social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="YouTube">YT</a>
+            <a href="#" aria-label="X">X</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Página de demostración con fines educativos. No afiliada a BMW Motorrad.</p>
+        <nav>
+          <a href="#">Aviso legal</a>
+          <a href="#">Privacidad</a>
+          <a href="#">Cookies</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Menú móvil =====
+    const navToggle = document.getElementById('navToggle');
+    const mainNav = document.getElementById('mainNav');
+    navToggle.addEventListener('click', () => {
+      const open = mainNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open);
+    });
+    mainNav.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') mainNav.classList.remove('open');
+    });
+
+    // ===== Validación y envío simulado de formularios =====
+    function setupForm(formId, msgId, okText) {
+      const form = document.getElementById(formId);
+      const msg = document.getElementById(msgId);
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        msg.className = 'form-msg';
+
+        if (!form.checkValidity()) {
+          msg.textContent = 'Por favor completa todos los campos obligatorios correctamente.';
+          msg.classList.add('err');
+          // Enfoca el primer campo inválido
+          const firstInvalid = form.querySelector(':invalid');
+          if (firstInvalid) firstInvalid.focus();
+          return;
+        }
+
+        // Aquí se enviarían los datos a un servidor (fetch/AJAX).
+        msg.textContent = okText;
+        msg.classList.add('ok');
+        form.reset();
+      });
+    }
+
+    setupForm('testRideForm', 'testRideMsg',
+      '¡Solicitud enviada! Un asesor te contactará pronto para confirmar tu prueba de manejo.');
+    setupForm('contactForm', 'contactMsg',
+      '¡Mensaje enviado! Te responderemos a la brevedad.');
+    setupForm('newsletterForm', 'newsletterMsg',
+      '¡Listo! Ya estás suscrito al newsletter de BMW Motorrad.');
+
+    // La fecha de la prueba de manejo no puede ser anterior a hoy
+    const dateInput = document.getElementById('tr-fecha');
+    dateInput.min = new Date().toISOString().split('T')[0];
+  </script>
+</body>
+</html>
