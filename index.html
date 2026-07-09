@@ -681,8 +681,8 @@
       if (e.target.tagName === 'A') mainNav.classList.remove('open');
     });
 
-    // ===== Validación y envío simulado de formularios =====
-    function setupForm(formId, msgId, okText) {
+    // ===== Validación de formularios y redirección a la página de gracias =====
+    function setupForm(formId, msgId, formKey) {
       const form = document.getElementById(formId);
       const msg = document.getElementById(msgId);
 
@@ -700,18 +700,13 @@
         }
 
         // Aquí se enviarían los datos a un servidor (fetch/AJAX).
-        msg.textContent = okText;
-        msg.classList.add('ok');
-        form.reset();
+        window.location.href = 'gracias.html?form=' + formKey;
       });
     }
 
-    setupForm('testRideForm', 'testRideMsg',
-      '¡Solicitud enviada! Un asesor te contactará pronto para confirmar tu prueba de manejo.');
-    setupForm('contactForm', 'contactMsg',
-      '¡Mensaje enviado! Te responderemos a la brevedad.');
-    setupForm('newsletterForm', 'newsletterMsg',
-      '¡Listo! Ya estás suscrito al newsletter de BMW Motorrad.');
+    setupForm('testRideForm', 'testRideMsg', 'testride');
+    setupForm('contactForm', 'contactMsg', 'contacto');
+    setupForm('newsletterForm', 'newsletterMsg', 'newsletter');
 
     // La fecha de la prueba de manejo no puede ser anterior a hoy
     const dateInput = document.getElementById('tr-fecha');
