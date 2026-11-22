@@ -86,3 +86,16 @@ Kids' movement song. Target runtime 2:15–2:30. Set as "Made for kids" in YouTu
 - Keep the 3-second silence at the freeze; it is the payoff.
 - The corner animal counter carries the goal for viewers watching on mute.
 - One ask only: replay. No subscribe pitch.
+
+## Packaging
+
+**Title (98/100 with thumbnail):** Find the 3 Hiding Zoo Animals | Kids Dance Song
+**Thumbnail text:** WHO'S STOMPING?
+**Backup:** Can You Move Like 3 Zoo Animals? Freeze Dance for Kids + "FASTER… GO!" (98/100)
+
+**Thumbnail brief**
+- Subject: the elephant mid-stomp, one foot raised high, big surprised eyes, mouth open. A giant footprint "cracking" the ground under it.
+- Mystery: two pairs of eyes peeking out of a bush on the right (mouse and snake, not fully shown). This sells "find the 3 animals" without words.
+- Text: WHO'S STOMPING? Top-left, chunky rounded white letters with a thick dark outline, in two lines at most.
+- Background: a plain bright sky-blue or lime gradient behind the elephant. Keep the jungle detail only in the bush so the grey elephant holds contrast at feed size.
+- Keep the bottom-right corner empty (the timestamp covers it).
