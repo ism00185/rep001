@@ -99,3 +99,8 @@ Kids' movement song. Target runtime 2:15–2:30. Set as "Made for kids" in YouTu
 - Text: WHO'S STOMPING? Top-left, chunky rounded white letters with a thick dark outline, in two lines at most.
 - Background: a plain bright sky-blue or lime gradient behind the elephant. Keep the jungle detail only in the bush so the grey elephant holds contrast at feed size.
 - Keep the bottom-right corner empty (the timestamp covers it).
+
+## Video build (v1)
+- Song: vidIQ generated track, 2:30, from the lyrics above.
+- Visuals: 5 illustrated scenes (bush, elephant, mouse, snake, all three), edited locally with `video/build_zoo.py` (ffmpeg): pans/zooms, a found-animals counter, and on-screen action words.
+- Scene timing is estimated from the lyric order, not aligned to the vocal; check the elephant/mouse/snake cuts (16s, 35s, 54s) and FREEZE (136s) against the audio.
