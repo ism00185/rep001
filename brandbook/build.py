@@ -110,7 +110,7 @@ def van():
             + img('logo-color', 70, 74, 150) +
             '<text x="240" y="110" font-family="Montserrat" font-weight="900" font-size="25" fill="#141414">FUMIGACIÓN Y</text>'
             '<text x="240" y="140" font-family="Montserrat" font-weight="900" font-size="25" fill="#41781d">CONTROL DE PLAGAS</text>'
-            '<text x="242" y="166" font-family="Inter" font-weight="600" font-size="13.5" fill="#555">Hogares · Negocios · Restaurantes · Comején</text>'
+            '<text x="242" y="166" font-family="Inter" font-weight="600" font-size="13.5" fill="#555">Hogares · Negocios · Restaurantes</text>'
             '<text x="270" y="244" font-family="Montserrat" font-weight="800" font-size="26" fill="#fff">WhatsApp +507 6761-9763</text>'
             '<text x="580" y="210" font-family="Montserrat" font-weight="700" font-size="15" fill="#fff">anthoxpty.com</text>'
             '</svg>')
@@ -237,7 +237,7 @@ page("01 · Esencia", "Valores y personalidad", sechead("01", "Valores y persona
 page("02 · Logotipo", "Logotipo principal", sechead("02", "Logotipo principal", "Nuestra firma visual: siempre igual, siempre reconocible") + '''
 <div class="anat">
   <div class="anat-logo"><img src="img/logo-color.png" alt="">
-    <span class="tag t1">A · Isotipo</span><span class="tag t2">B · Logotipo</span><span class="tag t3">C · Descriptor</span><span class="tag t4">D · Sello inferior</span>
+    
   </div>
   <div class="anat-text">
     <div class="li"><b>A</b><div><strong>Isotipo</strong><p>La “A” de Anthox se levanta como el techo de un hogar protegido. A su alrededor, las plagas que combatimos y el técnico en acción, enmarcados en un círculo de protección.</p></div></div>
@@ -356,16 +356,14 @@ page("07 · Aplicaciones", "Suéteres y hoodies", sechead("07", "Suéteres y hoo
 
 # 15 Uniforme técnico
 page("07 · Aplicaciones", "Uniforme técnico", sechead("07", "Uniforme técnico", "La imagen del técnico es la imagen de la marca") + f'''
-<div class="stage four mt">
+<div class="stage five mt">
   <figure>{tee("#18191a", "logo-negativo", polo=True)}<figcaption><b>Polo · frente</b>Logo 7 cm pecho izquierdo</figcaption></figure>
   <figure>{tee("#18191a", "iso-negativo", back=True)}<figcaption><b>Polo · espalda</b>Isotipo + nombre + WhatsApp</figcaption></figure>
   <figure>{tee("#ffffff", "logo-color")}<figcaption><b>Camiseta promocional</b>Logo a color al centro</figcaption></figure>
   <figure>{cap("#18191a", "iso-negativo", bill="#2f6b16")}<figcaption><b>Gorra técnica</b>Isotipo bordado · visera verde</figcaption></figure>
+  <figure><div class="idcard"><div class="idtop"><img src="img/logo-negativo.png"></div><div class="idphoto"></div><b>Nombre Apellido</b><span>Técnico en control de plagas</span><em>ID 0001 · Vence 12/2027</em></div><figcaption><b>Carné técnico</b>CR80 · 54 × 86 mm</figcaption></figure>
 </div>
-<div class="badge-row">
-  <div class="idcard"><div class="idtop"><img src="img/logo-negativo.png"></div><div class="idphoto"></div><b>Nombre Apellido</b><span>Técnico en control de plagas</span><em>ID 0001 · Vence 12/2027</em></div>
-  <p class="spec" style="margin:0;max-width:520px">Carné de identificación (CR80, 54 × 86 mm). El técnico debe portarlo visible en cada servicio: refuerza la confianza del cliente, uno de nuestros valores centrales.</p>
-</div>''', cls="studio")
+<p class="spec">El técnico debe portar uniforme completo y carné visible en cada servicio: refuerza la confianza del cliente.</p>''', cls="studio")
 
 # 16 Tazas
 page("07 · Aplicaciones", "Tazas", sechead("07", "Tazas (mugs)", "Regalo corporativo para clientes y oficina") + f'''
@@ -410,10 +408,9 @@ page("07 · Aplicaciones", "Merchandising", sechead("07", "Merchandising", "Art�
 <div class="merch mt">
   <figure>{tote()}<figcaption><b>Tote bag</b>Lona natural · logo a color</figcaption></figure>
   <figure>{bottle()}<figcaption><b>Termo</b>Acero 20 oz · grabado/blanco</figcaption></figure>
-  <figure class="stickers">
-    <div class="st s1"><img src="img/logo-color.png"></div>
+  <figure class="stickers"><div class="st-grid">
     <div class="st s2"><span>FUMIGADO POR</span><img src="img/logo-negativo.png"><em>Próximo servicio: ___/___/___</em></div>
-    <div class="st s3"><img src="img/iso-blanco.png"></div>
+    <div class="st-col"><div class="st s1"><img src="img/logo-color.png"></div><div class="st s3"><img src="img/iso-blanco.png"></div></div></div>
     <figcaption><b>Stickers y sello de servicio</b>El sello “Fumigado por” se coloca tras cada visita: recordatorio y publicidad.</figcaption>
   </figure>
   <figure class="hanger"><div class="dh"><i></i><img src="img/logo-negativo.png"><b>¡Estamos fumigando!</b><span>Por favor no ingresar hasta las ____ : ____</span><em>Mascotas y niños fuera del área</em></div><figcaption><b>Aviso de puerta</b>Para PH, oficinas y restaurantes</figcaption></figure>
@@ -427,8 +424,8 @@ page("07 · Aplicaciones", "Digital", sechead("07", "Presencia digital", "Sitio 
     <div class="phone"><img src="img/web-mob.jpg"></div>
   </div>
   <div class="social">
-    <div class="ig ig1"><span class="tagp">TIP</span><b>¿Cucarachas<br>otra vez?</b><small>3 razones por las que regresan</small><img src="img/iso-negativo.png"></div>
-    <div class="ig ig2"><b>Temporada<br>de lluvias =<br>mosquitos</b><small>Elimina criaderos cada semana 🦟</small><img src="img/iso-blanco.png"></div>
+    <div class="ig ig1"><img src="img/iso-negativo.png"><span class="tagp">TIP</span><b>¿Cucarachas<br>otra vez?</b><small>3 razones por las que regresan</small></div>
+    <div class="ig ig2"><img src="img/iso-blanco.png"><b>Temporada<br>de lluvias =<br>mosquitos</b><small>Elimina criaderos cada semana 🦟</small></div>
     <div class="ig ig3"><img src="img/logo-color.png" class="lg"><b>15% OFF</b><small>en tu primer servicio</small><span class="cta">Escríbenos por WhatsApp</span></div>
     <div class="avatar"><div class="av"><img src="img/iso-color.png"></div><div><b>Foto de perfil</b><span>Isotipo sobre blanco, centrado. Usar en WhatsApp Business, Instagram, Facebook, TikTok y Google Business Profile.</span></div></div>
   </div>

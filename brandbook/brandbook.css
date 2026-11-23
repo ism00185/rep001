@@ -299,3 +299,47 @@ figcaption b { display: block; font: 800 13.5px Montserrat; color: var(--ink); }
 .page.flex .content { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 8px 0 18px; }
 .page.flex .content > .mt:first-child { margin-top: 0; }
 .el.swoosh .lbl { top: 16px; bottom: auto; }
+
+/* ===== versión final: sin elementos superpuestos ===== */
+.anat-logo { padding: 10px 30px; }
+.stage.five { grid-template-columns: repeat(4, 1fr) .72fr; gap: 18px; }
+.five .mock { max-height: 250px; }
+.idcard { transform: none; margin: 0 auto; width: 128px; height: 196px; }
+/* tarjetas: una debajo de la otra, sin rotación */
+.cards { height: auto; display: flex; flex-direction: column; align-items: center; gap: 22px; }
+.bc { position: relative; left: auto !important; top: auto !important; transform: none !important; width: 340px; height: 190px; }
+.cards .spec { position: static; margin: 0; }
+.letter { transform: none; }
+/* stickers en cuadrícula */
+.stickers { height: auto; }
+.st-grid { display: flex; gap: 18px; align-items: center; justify-content: center; margin-bottom: 6px; }
+.st-col { display: flex; flex-direction: column; gap: 18px; }
+.st { position: relative; left: auto !important; top: auto !important; transform: none !important; }
+.st.s2 { width: 190px; height: 190px; }
+.st.s1, .st.s3 { width: 104px; height: 104px; }
+.st.s1 img { width: 78px; } .st.s3 img { width: 60px; }
+/* dispositivos uno al lado del otro */
+.devices { height: auto; display: flex; gap: 22px; align-items: flex-end; }
+.laptop { position: relative; left: auto; top: auto; width: 440px; flex: none; }
+.screen img { height: 246px; }
+.base { margin: 0 -28px; }
+.phone { position: relative; right: auto; top: auto; width: 128px; height: 262px; flex: none; }
+.digital { grid-template-columns: 1.2fr .8fr; }
+
+/* digital: dos filas sin superposiciones */
+.digital { grid-template-columns: 1fr; gap: 22px; }
+.devices { justify-content: center; }
+.laptop { width: 470px; } .screen img { height: 262px; }
+.phone { width: 132px; height: 272px; }
+.social { grid-template-columns: repeat(3, 150px) 1fr; gap: 16px; align-items: stretch; }
+.ig { justify-content: flex-start; gap: 6px; }
+.ig img { position: static; width: 30px; margin-bottom: auto; }
+.ig .tagp { position: static; align-self: flex-start; margin-bottom: 4px; }
+.ig1 img { order: -1; }
+.ig b { font-size: 16px; }
+.ig small { font-size: 9px; }
+.ig3 .lg { width: 48px; margin-bottom: 4px; }
+.avatar { grid-column: auto; margin-top: 0; }
+.idphoto { margin: 12px auto 8px; }
+
+.idcard { height: 220px; }
